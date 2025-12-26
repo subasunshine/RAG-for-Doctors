@@ -20,12 +20,12 @@ all_texts = []
 for piece in small_pieces:
     all_texts.append(piece.page_content)
 
-magic_model = SentenceTransformer("all-MiniLM-L6-v2")
-all_numbers = magic_model.encode(all_texts)
+model = SentenceTransformer("all-MiniLM-L6-v2")
+all_numbers = model.encode(all_texts)
 
 def find_best_text(question, how_many=3):
 
-    question_number = magic_model.encode([question])[0]
+    question_number = model.encode([question])[0]
     score_and_text = []
 
     for i in range(len(all_numbers)):
@@ -82,3 +82,4 @@ while True:
 
     answer = ask_ai(q)
     print("\nAI Says:", answer)
+
